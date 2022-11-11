@@ -7,8 +7,6 @@ import {
   Home,
   HomeActive,
   Menu,
-  Messenger,
-  Notifications,
   Search,
 } from "../../svg";
 import { useSelector } from "react-redux";
@@ -44,7 +42,7 @@ export default function Header({ page, getAllPosts }) {
           <Search color={color} />
           <input
             type="text"
-            placeholder="Search Facebook"
+            placeholder="Search Social"
             className="hide_input"
           />
         </div>

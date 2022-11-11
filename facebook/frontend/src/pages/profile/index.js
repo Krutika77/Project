@@ -8,7 +8,6 @@ import "./style.css";
 import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
 import ProfileMenu from "./ProfileMenu";
-import PplYouMayKnow from "./PplYouMayKnow";
 import CreatePost from "../../components/createPost";
 import GridPosts from "./GridPosts";
 import Post from "../../components/post";
@@ -135,7 +134,6 @@ export default function Profile({ getAllPosts }) {
       <div className="profile_bottom">
         <div className="profile_container">
           <div className="bottom_container">
-            <PplYouMayKnow />
             <div
               className={`profile_grid ${
                 check && scrollHeight >= height && leftHeight > 1000

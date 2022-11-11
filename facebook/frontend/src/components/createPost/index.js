@@ -19,16 +19,16 @@ export default function CreatePost({ user, setVisible, profile }) {
       <div className="createPost_body">
         <div className="createPost_icon hover1">
           <LiveVideo color="#f3425f" />
-          Live Video
+          Gif
         </div>
         <div className="createPost_icon hover1">
           <Photo color="#4bbf67" />
-          Photo/Video
+          Photos
         </div>
         {profile ? (
           <div className="createPost_icon hover1">
             <i className="lifeEvent_icon"></i>
-            Life Event
+            Ideas
           </div>
         ) : (
           <div className="createPost_icon hover1">
