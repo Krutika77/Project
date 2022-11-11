@@ -36,7 +36,7 @@ export default function UserMenu({ user }) {
             </div>
             <div className="mmenu_col">
               <div className="mmenu_span1">Give feedback</div>
-              <div className="mmenu_span2">Help us improve facebook</div>
+              <div className="mmenu_span2">Help us improve Social</div>
             </div>
           </div>
           <div className="mmenu_splitter"></div>
@@ -77,7 +77,7 @@ export default function UserMenu({ user }) {
             <div className="small_circle">
               <i className="dark_filled_icon"></i>
             </div>
-            <span>Display & Accessibility</span>
+            <span>Display</span>
             <div className="rArrow">
               <i className="right_icon"></i>
             </div>
