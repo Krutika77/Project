@@ -10,7 +10,6 @@ export default function Detail({
   updateDetails,
   infos,
   text,
-  rel,
 }) {
   const [show, setShow] = useState(false);
   return (
@@ -38,7 +37,6 @@ export default function Detail({
           infos={infos}
           detail
           setShow={setShow}
-          rel={rel}
         />
       )}
     </div>
