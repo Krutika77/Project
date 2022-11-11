@@ -156,7 +156,7 @@ export default function Profile({ getAllPosts }) {
                   photos={photos}
                 />
                 <Friends friends={profile.friends} />
-                <div className="relative_fb_copyright">
+                <div className="relative_copyright">
                   <Link to="/">Privacy </Link>
                   <span>. </span>
                   <Link to="/">Terms </Link>

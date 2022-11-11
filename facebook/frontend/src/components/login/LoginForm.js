@@ -53,7 +53,7 @@ export default function LoginForm({ setVisible }) {
       <div className="login_1">
         <img src="../../icons/facebook.svg" alt="" />
         <span>
-          Facebook helps you connect and share with the people in your life.
+          Social helps you connect and share with the people in your life.
         </span>
       </div>
       <div className="login_2">
