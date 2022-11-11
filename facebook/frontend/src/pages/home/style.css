@@ -11,7 +11,6 @@
   transform: translateX(-50%);
 }
 @media (max-width: 1175px) {
-  .stories,
   .createPost,
   .post,
   .send_verification {
@@ -45,7 +44,7 @@
     place-items: center;
   }
   .home_middle {
-    position: relative;
+    position: absolute;
     margin-left: 55px;
   }
   .right_home {
@@ -57,7 +56,6 @@
   .contact_circle {
     width: 20px;
   }
-  .stories,
   .createPost,
   .post,
   .send_verification {
@@ -70,11 +68,8 @@
   .send_verification {
     width: 93%;
   }
-  .stories {
-    width: 95%;
-  }
   .home_middle {
-    margin-left: 10%;
+    margin-right: 10%;
   }
   .right_home {
     left: 78%;
@@ -99,31 +94,11 @@
   .send_verification {
     width: 110%;
   }
-  .stories {
-    width: 112%;
-  }
   .home_middle {
     margin-left: 9%;
   }
 }
 @media (max-width: 805px) {
-  .stories {
-    grid-template-columns: repeat(6, 12.7vw);
-  }
-  .story_profile_name,
-  .story_create_text {
-    display: none;
-  }
-  .create_story_card {
-    filter: brightness(96%);
-  }
-  .stories .white_circle {
-    right: 5px;
-  }
-  .story_profile_pic {
-    width: 7vw;
-    height: 7vw;
-  }
   .left_home::-webkit-scrollbar {
     display: none;
   }
@@ -139,21 +114,10 @@
     position: absolute;
     margin-left: 0;
   }
-  .stories,
   .createPost,
   .post,
   .send_verification {
     width: 100%;
-  }
-  .stories .white_circle {
-    display: none;
-  }
-  .stories {
-    grid-template-columns: repeat(6, 14vw);
-  }
-  .story,
-  .create_story_card {
-    height: 30vw;
   }
   .createPost_icon {
     font-size: 12px;
@@ -179,10 +143,6 @@
   .send_verification {
     width: 98%;
     margin: 0 auto;
-  }
-  .stories {
-    grid-template-columns: repeat(6, 13vw);
-    padding-left: 10px;
   }
   .home_middle {
     margin: 56px auto;
