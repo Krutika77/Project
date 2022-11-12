@@ -38,7 +38,7 @@
   background: var(--bg-secondary);
 }
 .active_friends .small_circle {
-  background: #1876f2;
+  background: #51ae84;
 }
 .active_friends i {
   filter: invert(100%);

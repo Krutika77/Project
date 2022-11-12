@@ -225,7 +225,7 @@ export default function Post({ post, user, profile }) {
           
           ${
             check === "like"
-              ? "#4267b2"
+              ? "#51ae84"
               : check === "love"
               ? "#f63459"
               : check === "haha"

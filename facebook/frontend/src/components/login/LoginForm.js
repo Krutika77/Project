@@ -51,9 +51,9 @@ export default function LoginForm({ setVisible }) {
   return (
     <div className="login_wrap">
       <div className="login_1">
-        <img src="../../icons/facebook.svg" alt="" />
+        <img src="../../icons/social.svg" alt="" />
         <span>
-          Social helps you connect and share with the people in your life.
+          Social helps you share and evolve with the people in your life.
         </span>
       </div>
       <div className="login_2">
@@ -93,7 +93,7 @@ export default function LoginForm({ setVisible }) {
           <Link to="/reset" className="forgot_password">
             Forgotten password?
           </Link>
-          <DotLoader color="#1876f2" loading={loading} size={30} />
+          <DotLoader color="#51ae84" loading={loading} size={30} />
 
           {error && <div className="error_text">{error}</div>}
           <div className="sign_splitter"></div>

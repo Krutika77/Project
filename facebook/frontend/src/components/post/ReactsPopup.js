@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const reactsArray = [
   {
     name: "like",
-    image: "../../../reacts/like.gif",
+    image: "../../../reacts/likee.png",
   },
   {
     name: "love",
