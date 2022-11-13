@@ -51,7 +51,7 @@ export default function LoginForm({ setVisible }) {
   return (
     <div className="login_wrap">
       <div className="login_1">
-        <img src="../../icons/social.svg" alt="" />
+        <img className="social_svg" src="../../icons/social.svg" alt="" />
         <span>
           Social helps you share and evolve with the people in your life.
         </span>

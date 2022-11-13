@@ -255,10 +255,20 @@
   .reg_grid .input_error {
     width: 350px;
   }
+  .login_1 img {
+    width: 350px !important;
+    margin-left: -1.7rem;
+    padding-top: 50px;
+  }
 }
 @media (min-width: 650px) {
   .login_footer_wrap {
     max-width: 650px;
+  }
+  .login_1 img {
+    width: 350px !important;
+    margin-left: -1.7rem;
+    padding-top: 50px;
   }
 }
 @media (min-width: 850px) {
@@ -274,10 +284,6 @@
     width: 50%;
     margin-bottom: 15vh;
   }
-  .login_1 img {
-    width: 300px;
-    margin-left: -1.7rem;
-  }
   .login_1 span {
     font-size: 28px;
   }
@@ -289,6 +295,13 @@
   }
   .login_footer_wrap {
     max-width: 900px;
+  }
+}
+@media (max-width: 540px) {
+  .login_1 img {
+    width: 350px !important;
+    margin-left: -1.7rem;
+    padding-top: 50px;
   }
 }
 /*----Media queries--------------*/

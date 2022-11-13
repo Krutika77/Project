@@ -1,8 +1,8 @@
 import { useState } from "react";
-import AllPhotos from "./allPhotos";
+import AllPhotos from "./AllPhotos";
 
 export default function Photos({ username, token, photos }) {
-  const [allPicsVisible, setAllPicsVisible] = useState(true);
+  const [allPicsVisible, setAllPicsVisible] = useState(false);
   return (
     <div className="profile_card">
       <div className="profile_card_header">
