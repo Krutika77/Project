@@ -30,14 +30,18 @@ export default function UserMenu({ user }) {
             </div>
           </Link>
           <div className="mmenu_splitter"></div>
-          <div className="mmenu_main hover3">
-            <div className="small_circle">
-              <i className="report_filled_icon"></i>
-            </div>
-            <div className="mmenu_col">
-              <div className="mmenu_span1">Give feedback</div>
-              <div className="mmenu_span2">Help us improve Social</div>
-            </div>
+          <div>
+            <a href="mailto:socialwelfare.seva@gmail.com">
+              <div className="mmenu_main hover3">
+                <div className="small_circle">
+                  <i className="report_filled_icon"></i>
+                </div>
+                <div className="mmenu_col">
+                  <div className="mmenu_span1">Give feedback</div>
+                  <div className="mmenu_span2">Help us improve Social</div>
+                </div>
+              </div>
+            </a>
           </div>
           <div className="mmenu_splitter"></div>
           <div
