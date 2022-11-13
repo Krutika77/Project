@@ -168,7 +168,7 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="text"
-                  placeholder="Mobile number or email address"
+                  placeholder="Email address"
                   name="email"
                   onChange={handleRegisterChange}
                 />
@@ -176,7 +176,7 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="password"
-                  placeholder="New password"
+                  placeholder="Password"
                   name="password"
                   onChange={handleRegisterChange}
                 />

@@ -105,7 +105,7 @@ export default function LoginForm({ setVisible }) {
           </button>
         </div>
         <Link to="/" className="sign_extra">
-          <b>Create a Page</b> for a celebrity, brand or business.
+          <b>Create a Page</b> for a non-profit, community or support group.
         </Link>
       </div>
     </div>
