@@ -1,13 +1,26 @@
-import axios from "axios";
-import { useEffect, useReducer } from "react";
-import { photosReducer } from "../../functions/reducers";
+import { useState } from "react";
+import AllPhotos from "./allPhotos";
 
 export default function Photos({ username, token, photos }) {
+  const [allPicsVisible, setAllPicsVisible] = useState(true);
   return (
     <div className="profile_card">
       <div className="profile_card_header">
         Photos
-        <div className="profile_header_link">See all photos</div>
+        <div
+          className="profile_header_link"
+          onClick={() => setAllPicsVisible(true)}
+        >
+          See all photos
+        </div>
+        {allPicsVisible && (
+          <AllPhotos
+            username={username}
+            token={token}
+            photos={photos}
+            setAllPicsVisible={setAllPicsVisible}
+          />
+        )}
       </div>
       <div className="profile_card_count">
         {photos.total_count === 0

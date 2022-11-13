@@ -2,18 +2,18 @@ import { useRef, useState } from "react";
 import ProfilePicture from "../../components/profielPicture";
 import Friendship from "./Friendship";
 import { Link } from "react-router-dom";
-// import CreatePostPopup from "../../components/createPostPopup";
-// import { useSelector } from "react-redux";
+import CreatePostPopup from "../../components/createPostPopup";
+import { useSelector } from "react-redux";
 
 export default function ProfielPictureInfos({
   profile,
   visitor,
   photos,
   othername,
-  // dispatch,
+  dispatch,
 }) {
-  // const [createVisible, setCreateVisible] = useState(false);
-  // const { user } = useSelector((state) => ({ ...state }));
+  const [createVisible, setCreateVisible] = useState(false);
+  const { user } = useSelector((state) => ({ ...state }));
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
   return (
@@ -75,11 +75,11 @@ export default function ProfielPictureInfos({
         <Friendship friendshipp={profile?.friendship} profileid={profile._id} />
       ) : (
         <div className="profile_w_right">
-          <div className="green_btn">
+          <div className="green_btn" onClick={() => setCreateVisible(true)}>
             <img src="../../../icons/plus.png" alt="" className="invert" />
             <span>Thoughts for Today</span>
           </div>
-          {/* {createVisible && (
+          {createVisible && (
             <CreatePostPopup
               user={user}
               setVisible={setCreateVisible}
@@ -87,7 +87,7 @@ export default function ProfielPictureInfos({
               dispatch={dispatch}
               profile
             />
-          )} */}
+          )}
         </div>
       )}
     </div>

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useCallback, useRef, useState } from "react";
 import Cropper from "react-easy-crop";
 import { useDispatch, useSelector } from "react-redux";

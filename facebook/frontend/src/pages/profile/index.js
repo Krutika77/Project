@@ -127,7 +127,7 @@ export default function Profile({ getAllPosts }) {
             visitor={visitor}
             photos={photos.resources}
             othername={othername}
-            // dispatch={dispatch}
+            dispatch={dispatch}
           />
           <ProfileMenu />
         </div>

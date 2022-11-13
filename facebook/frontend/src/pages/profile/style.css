@@ -287,6 +287,20 @@
   font-size: 13px;
   padding-left: 1px;
 }
+.all_photo_card {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.all_photo_card:hover {
+  filter: brightness(110%);
+}
+.all_photo_card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 .profile_friend_count {
   font-weight: 600;
 }
@@ -430,6 +444,9 @@
 @media (max-width: 510px) {
   .udpate_cover_wrapper {
     bottom: 3rem;
+  }
+  .all_photo_card img {
+    height: 150px;
   }
 }
 @media (max-width: 405px) {
