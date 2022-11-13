@@ -40,7 +40,7 @@ export default function Reset() {
               <img src={user.picture} alt="" />
             </Link>
             <button
-              className="blue_btn"
+              className="green_btn"
               onClick={() => {
                 logout();
               }}
@@ -50,7 +50,7 @@ export default function Reset() {
           </div>
         ) : (
           <Link to="/login" className="right_reset">
-            <button className="blue_btn">Login</button>
+            <button className="green_btn">Login</button>
           </Link>
         )}
       </div>

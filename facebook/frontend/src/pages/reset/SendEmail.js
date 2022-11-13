@@ -61,7 +61,7 @@ export default function SendEmail({
           onClick={() => {
             sendEmail();
           }}
-          className="blue_btn"
+          className="green_btn"
         >
           Continue
         </button>

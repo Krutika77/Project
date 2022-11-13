@@ -213,7 +213,7 @@ export default function RegisterForm({ setVisible }) {
                 notifications from us and can opt out at any time.
               </div>
               <div className="reg_btn_wrapper">
-                <button className="blue_btn open_signup">Sign Up</button>
+                <button className="green_btn open_signup">Sign Up</button>
               </div>
               <DotLoader color="#51ae84" loading={loading} size={30} />
               {error && <div className="error_text">{error}</div>}

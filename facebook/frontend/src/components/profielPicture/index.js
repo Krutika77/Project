@@ -52,10 +52,10 @@ export default function ProfilePicture({ username, setShow, pRef, photos }) {
         <div className="update_picture_wrap">
           <div className="update_picture_buttons">
             <button
-              className="light_blue_btn"
+              className="light_green_btn"
               onClick={() => refInput.current.click()}
             >
-              <i className="plus_icon filter_blue"></i>
+              <i className="plus_icon filter_green"></i>
               Upload photo
             </button>
             <button className="gray_btn">
@@ -67,7 +67,7 @@ export default function ProfilePicture({ username, setShow, pRef, photos }) {
         {error && (
           <div className="postError comment_error">
             <div className="postError_error">{error}</div>
-            <button className="blue_btn" onClick={() => setError("")}>
+            <button className="green_btn" onClick={() => setError("")}>
               Try again
             </button>
           </div>

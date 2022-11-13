@@ -117,14 +117,14 @@ export default function Friendship({ friendshipp, profileid }) {
       ) : (
         !friendship?.requestSent &&
         !friendship?.requestReceived && (
-          <button className="blue_btn" onClick={() => addFriendHandler()}>
+          <button className="green_btn" onClick={() => addFriendHandler()}>
             <img src="../../../icons/addFriend.png" alt="" className="invert" />
             <span>Add Friend</span>
           </button>
         )
       )}
       {friendship?.requestSent ? (
-        <button className="blue_btn" onClick={() => cancelRequestHandler()}>
+        <button className="green_btn" onClick={() => cancelRequestHandler()}>
           <img
             src="../../../icons/cancelRequest.png"
             className="invert"
@@ -165,12 +165,12 @@ export default function Friendship({ friendshipp, profileid }) {
             <span>Following</span>
           </button>
         ) : (
-          <button className="blue_btn" onClick={() => followHandler()}>
+          <button className="green_btn" onClick={() => followHandler()}>
             <img src="../../../icons/follow.png" className="invert" alt="" />
             <span>Follow</span>
           </button>
         )}
-        <button className={friendship?.friends ? "blue_btn" : "gray_btn"}>
+        <button className={friendship?.friends ? "green_btn" : "gray_btn"}>
           <img
             src="../../../icons/message.png"
             className={friendship?.friends && "invert"}

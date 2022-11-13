@@ -11,7 +11,7 @@ export default function GridPosts() {
       <div className="create_splitter"></div>
       <div className="createPost_body grid2">
         <div className="view_type active">
-          <i className="list_icon filter_blue"></i>
+          <i className="list_icon filter_green"></i>
           List view
         </div>
       </div>

@@ -66,7 +66,7 @@ export default function CodeVerification({
               <Link to="/login" className="gray_btn">
                 Cancel
               </Link>
-              <button type="submit" className="blue_btn">
+              <button type="submit" className="green_btn">
                 Continue
               </button>
             </div>

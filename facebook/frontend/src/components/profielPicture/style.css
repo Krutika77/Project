@@ -13,8 +13,8 @@
 .update_picture_buttons button {
   width: 100%;
 }
-.update_picture_buttons .light_blue_btn {
-  color: var(--blue-color);
+.update_picture_buttons .light_green_btn {
+  color: var(--green-color);
 }
 .update_img {
   width: 700px !important;
@@ -23,7 +23,7 @@
 .update_image_desc {
   padding: 15px;
 }
-.textarea_blue {
+.textarea_green {
   width: 100%;
   height: 85px;
   resize: none;
@@ -36,10 +36,10 @@
   background: var(--bg-primary);
   color: var(--color-primary);
 }
-.textarea_blue:focus {
-  outline-color: var(--blue-color);
+.textarea_green:focus {
+  outline-color: var(--green-color);
 }
-.textarea_blue:hover {
+.textarea_green:hover {
   border-color: var(--color-secondary);
 }
 .update_center {
@@ -124,8 +124,8 @@
   align-items: center;
   gap: 1rem;
 }
-.blue_link {
-  color: var(--blue-color);
+.green_link {
+  color: var(--green-color);
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;

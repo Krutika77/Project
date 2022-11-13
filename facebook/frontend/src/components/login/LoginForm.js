@@ -84,7 +84,7 @@ export default function LoginForm({ setVisible }) {
                   onChange={handleLoginChange}
                   bottom
                 />
-                <button type="submit" className="blue_btn">
+                <button type="submit" className="green_btn">
                   Log In
                 </button>
               </Form>
@@ -98,7 +98,7 @@ export default function LoginForm({ setVisible }) {
           {error && <div className="error_text">{error}</div>}
           <div className="sign_splitter"></div>
           <button
-            className="blue_btn open_signup"
+            className="green_btn open_signup"
             onClick={() => setVisible(true)}
           >
             Create Account

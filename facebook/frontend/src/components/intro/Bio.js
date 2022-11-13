@@ -16,7 +16,7 @@ export default function Bio({
         name={name}
         value={infos?.[name]}
         maxLength={detail ? 25 : 100}
-        className="textarea_blue details_input"
+        className="textarea_green details_input"
         onChange={handleChange}
       ></textarea>
 
@@ -33,7 +33,7 @@ export default function Bio({
             Cancel
           </button>
           <button
-            className="blue_btn"
+            className="green_btn"
             onClick={() => {
               updateDetails();
               setShow(false);

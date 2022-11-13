@@ -70,7 +70,7 @@ header {
   transform: translateX(-4px);
 }
 .active {
-  border-bottom: 3px solid var(--blue-color);
+  border-bottom: 3px solid var(--green-color);
   border-radius: 0;
   height: 56px;
   transform: translateX(0);
@@ -191,7 +191,7 @@ header {
 }
 .search_history_header a {
   cursor: pointer;
-  color: var(--blue-color);
+  color: var(--green-color);
 }
 
 /*---Search menu-----*/
@@ -520,13 +520,13 @@ header {
 
 /*----Active header----*/
 .active_header {
-  background: var(--light-blue-color);
+  background: var(--light-green-color);
 }
 .active_header svg {
-  fill: var(--blue-color);
+  fill: var(--green-color);
 }
 .active_link {
-  background: var(--light-blue-color);
-  color: var(--blue-color);
+  background: var(--light-green-color);
+  color: var(--green-color);
 }
 /*----Active header----*/

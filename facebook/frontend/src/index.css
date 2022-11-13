@@ -26,9 +26,9 @@ a {
   --dark-bg-third: #3a3b3c;
   --dark-color-primary: #242526;
   --dark-color-secondary: #b0b3b8;
-  --blue-color: #51ae84;
-  --green-color: #42b72a;
-  --light-blue-color: #e7f3ff;
+  --green-color: #51ae84;
+  --green2-color: #42b72a;
+  --light-green-color: #e3f5ef;
   --border-color: #ccced2;
   --shadow-1: rgba(0, 0, 0, 0.2);
   --shadow-2: rgba(0, 0, 0, 0.1);
@@ -37,10 +37,10 @@ a {
 }
 
 /*----Buttons----*/
-.blue_btn {
+.green_btn {
   border: none;
   outline: none;
-  background: var(--blue-color);
+  background: var(--green-color);
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
@@ -53,10 +53,10 @@ a {
   gap: 6px;
   cursor: pointer;
 }
-.light_blue_btn {
+.light_green_btn {
   border: none;
   outline: none;
-  background: var(--light-blue-color);
+  background: var(--light-green-color);
   padding: 8.5px 12px;
   border-radius: 7px;
   font-family: inherit;
@@ -85,7 +85,7 @@ a {
   gap: 6px;
   cursor: pointer;
 }
-.blue_btn,
+.green_btn,
 .gray_btn span {
   transform: translateY(-1px);
 }
@@ -146,9 +146,9 @@ a {
 /*---Circles------*/
 
 /*----filters---*/
-.filter_blue {
-  filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%)
-    saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg)
+.filter_green {
+  filter: invert(30%) sepia(57%) saturate(200%) saturate(200%) saturate(200%)
+    saturate(200%) saturate(200%) saturate(63%) hue-rotate(110deg)
     brightness(97%) contrast(96%);
 }
 /*----filters---*/

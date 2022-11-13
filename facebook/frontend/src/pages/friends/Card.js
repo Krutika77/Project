@@ -36,7 +36,7 @@ export default function Card({ userr, type, getData }) {
       </div>
       {type === "sent" ? (
         <button
-          className="blue_btn"
+          className="green_btn"
           onClick={() => cancelRequestHandler(userr._id)}
         >
           Cancel Request
@@ -44,7 +44,7 @@ export default function Card({ userr, type, getData }) {
       ) : type === "request" ? (
         <>
           <button
-            className="blue_btn"
+            className="green_btn"
             onClick={() => confirmHandler(userr._id)}
           >
             Confirm

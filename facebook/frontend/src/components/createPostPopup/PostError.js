@@ -5,7 +5,7 @@ export default function PostError({ error, setError }) {
     <div className="postError">
       <div className="postError_error">{error}</div>
       <button
-        className="blue_btn"
+        className="green_btn"
         onClick={() => {
           setError("");
         }}

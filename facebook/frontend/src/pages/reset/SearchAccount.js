@@ -66,7 +66,7 @@ export default function SearchAccount({
               <Link to="/login" className="gray_btn">
                 Cancel
               </Link>
-              <button type="submit" className="blue_btn">
+              <button type="submit" className="green_btn">
                 Search
               </button>
             </div>

@@ -118,7 +118,7 @@ export default function UpdateProfilePicture({
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="textarea_blue details_input"
+          className="textarea_green details_input"
         ></textarea>
       </div>
 
@@ -167,11 +167,11 @@ export default function UpdateProfilePicture({
         Your profile picture is public
       </div>
       <div className="update_submit_wrap">
-        <div className="blue_link" onClick={() => setImage("")}>
+        <div className="green_link" onClick={() => setImage("")}>
           Cancel
         </div>
         <button
-          className="blue_btn"
+          className="green_btn"
           disabled={loading}
           onClick={() => updateProfielPicture()}
         >

@@ -153,8 +153,8 @@
   height: 60px !important;
   width: 65px !important;
   margin: 0 !important;
-  color: var(--blue-color) !important;
-  border-bottom: 3px solid var(--blue-color);
+  color: var(--green-color) !important;
+  border-bottom: 3px solid var(--green-color);
   border-radius: 0 !important;
 }
 .p10_dots {
@@ -182,11 +182,11 @@
   padding: 10px 2.2rem;
 }
 
-.light_blue_btn img {
+.light_green_btn img {
   width: 20px;
 }
-.light_blue_btn {
-  color: var(--blue-color);
+.light_green_btn {
+  color: var(--green-color);
 }
 .profile_grid {
   position: relative;
@@ -219,7 +219,7 @@
   color: var(--color-secondary);
 }
 .grid2 .active {
-  color: var(--blue-color);
+  color: var(--green-color);
 }
 .othername {
   color: var(--color-secondary);
@@ -252,7 +252,7 @@
 .profile_header_link {
   font-weight: normal;
   font-size: 16px;
-  color: var(--blue-color);
+  color: var(--green-color);
   cursor: pointer;
   padding: 5px 10px;
 }
@@ -371,8 +371,8 @@
   cursor: pointer;
 }
 .selectCoverBox_link:first-of-type {
-  color: var(--blue-color);
-  border-bottom: 3px solid var(--blue-color);
+  color: var(--green-color);
+  border-bottom: 3px solid var(--green-color);
 }
 
 /*-----profile card--------*/
@@ -457,7 +457,7 @@
   align-items: center;
   gap: 10px;
 }
-.friendship .blue_btn {
+.friendship .green_btn {
   height: 34px;
 }
 @media (min-width: 900px) {
