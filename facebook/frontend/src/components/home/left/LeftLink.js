@@ -1,15 +1,12 @@
-export default function LeftLink({ img, text, notification }) {
+export default function LeftLink({ to, img, text, notification }) {
   return (
-    <div className="left_link hover1">
-      <img src={`../../../left/${img}.png`} alt="" />
-      {notification !== undefined ? (
-        <div className="col">
-          <div className="col_1">{text}</div>
-          <div className="col_2">{notification}</div>
+    <div>
+      <a href={to} target="_blank">
+        <div className="left_link hover1">
+          <img src={`../../../left/${img}.png`} alt="" />
+          <span>{text}</span>
         </div>
-      ) : (
-        <span>{text}</span>
-      )}
+      </a>
     </div>
   );
 }

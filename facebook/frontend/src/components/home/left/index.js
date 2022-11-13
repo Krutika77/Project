@@ -15,9 +15,14 @@ export default function LeftHome({ user }) {
           {user?.first_name} {user.last_name}
         </span>
       </Link>
+      <Link to="/friends" className="left_link hover1">
+        <img src={`../../left/friends.png`} alt="" />
+        <span>Find Friends</span>
+      </Link>
       {left.slice(0, 6).map((link, i) => (
         <LeftLink
           key={i}
+          to={link.to}
           img={link.img}
           text={link.text}
           notification={link.notification}
@@ -41,6 +46,7 @@ export default function LeftHome({ user }) {
           {left.slice(6, left.length).map((link, i) => (
             <LeftLink
               key={i}
+              to={link.to}
               img={link.img}
               text={link.text}
               notification={link.notification}
@@ -84,14 +90,11 @@ export default function LeftHome({ user }) {
         <span>. </span>
         <Link to="/">Advertising </Link>
         <span>. </span>
-        <Link to="/">
-          Ad Choices <i className="ad_choices_icon"></i>{" "}
-        </Link>
         <span>. </span>
         <Link to="/"></Link>Cookies <span>. </span>
         <Link to="/">More </Link>
         <span>. </span> <br />
-        Meta © 2022
+        Social © 2022
       </div>
     </div>
   );
