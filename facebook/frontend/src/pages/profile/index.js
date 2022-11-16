@@ -8,7 +8,7 @@ import "./style.css";
 import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
 import ProfileMenu from "./ProfileMenu";
-import CreatePost from "../../components/createPost";
+import CreatePostSection from "../../components/createPostSection";
 import GridPosts from "./GridPosts";
 import Post from "../../components/post";
 import Photos from "./Photos";
@@ -176,7 +176,11 @@ export default function Profile({ getAllPosts }) {
               </div>
               <div className="profile_right">
                 {!visitor && (
-                  <CreatePost user={user} profile setVisible={setVisible} />
+                  <CreatePostSection
+                    user={user}
+                    profile
+                    setVisible={setVisible}
+                  />
                 )}
                 <GridPosts />
                 <div className="posts">

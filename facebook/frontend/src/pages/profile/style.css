@@ -415,7 +415,7 @@
   .profile_grid {
     grid-template-columns: 1fr;
   }
-  .profile_grid .createPost {
+  .profile_grid .create_post {
     width: 100% !important;
   }
   .bottom_container {

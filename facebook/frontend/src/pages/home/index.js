@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import CreatePost from "../../components/createPost";
+import CreatePostSection from "../../components/createPostSection";
 import Header from "../../components/header";
 import LeftHome from "../../components/home/left";
 import RightHome from "../../components/home/right";
@@ -20,7 +20,7 @@ export default function Home({ setVisible, posts, loading, getAllPosts }) {
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
         {user.verified === false && <SendVerification user={user} />}
-        <CreatePost user={user} setVisible={setVisible} />
+        <CreatePostSection user={user} setVisible={setVisible} />
         <div className="posts">
           {posts.map((post) => (
             <Post key={post._id} post={post} user={user} />

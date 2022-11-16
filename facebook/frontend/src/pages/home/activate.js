@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import CreatePost from "../../components/createPost";
+import CreatePostSection from "../../components/createPostSection";
 import Header from "../../components/header";
 import LeftHome from "../../components/home/left";
 import RightHome from "../../components/home/right";
@@ -70,7 +70,7 @@ export default function Activate() {
       <Header />
       <LeftHome user={user} />
       <div className="home_middle">
-        <CreatePost user={user} />
+        <CreatePostSection user={user} />
       </div>
       <RightHome user={user} />
     </div>

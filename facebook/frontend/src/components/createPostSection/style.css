@@ -1,4 +1,4 @@
-.createPost {
+.create_post {
   background: var(--bg-primary);
   border-radius: 10px;
   box-shadow: 0 1px 2px var(--shadow-1);
@@ -6,13 +6,13 @@
   width: 100%;
   cursor: pointer;
 }
-.createPost_header {
+.create_post_header {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px 17px 5px 15px;
 }
-.createPost_header img {
+.create_post_header img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -36,12 +36,12 @@
   background: var(--bg-third);
   margin: 7px 10px;
 }
-.createPost_body {
+.create_post_body {
   padding: 0 10px 8px 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-.createPost_icon {
+.create_post_icon {
   display: flex;
   align-items: center;
   justify-content: center;
