@@ -1,8 +1,11 @@
 import { Photo } from "../../svg";
-export default function AddToYourPost({ setShowPrev }) {
+
+//Add photos/gifs to a post
+export default function AddToPost({ setShowPrev }) {
   return (
     <div
-      className="addtoyourpost"
+      // when user selects add Photo/Gif
+      className="addtopost"
       onClick={() => {
         setShowPrev(true);
       }}

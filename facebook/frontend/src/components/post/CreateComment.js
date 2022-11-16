@@ -86,7 +86,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
         <img src={user?.picture} alt="" />
         <div className="comment_input_wrap">
           {picker && (
-            <div className="comment_emoji_picker">
+            <div className="comment_emojis">
               <Picker onEmojiClick={handleEmoji} />
             </div>
           )}

@@ -1,24 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import Picker from "emoji-picker-react";
 import { useMediaQuery } from "react-responsive";
-export default function EmojiPickerBackgrounds({
+export default function EmojiBackgrounds({
   text,
   user,
   setText,
-  type2,
+  input_type,
   background,
   setBackground,
 }) {
   const [picker, setPicker] = useState(false);
-  const [showBgs, setShowBgs] = useState(false);
+  const [showBackgrounds, setshowBackgrounds] = useState(false);
   const [cursorPosition, setCursorPosition] = useState();
   const textRef = useRef(null);
-  const bgRef = useRef(null);
-
+  const backgroundRef = useRef(null);
+  // checks and adds emojis
   useEffect(() => {
     textRef.current.selectionEnd = cursorPosition;
   }, [cursorPosition]);
-  const handleEmoji = (e, { emoji }) => {
+
+  // to add emojis in current cursor position
+  const handleEmojis = (e, { emoji }) => {
     const ref = textRef.current;
     ref.focus();
     const start = text.substring(0, ref.selectionStart);
@@ -27,7 +29,9 @@ export default function EmojiPickerBackgrounds({
     setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
-  const postBackgrounds = [
+
+  // array of all the backgrounds provided to the user
+  const backgrounds = [
     "../../../images/postbackgrounds/1.jpg",
     "../../../images/postbackgrounds/2.jpg",
     "../../../images/postbackgrounds/3.jpg",
@@ -38,29 +42,38 @@ export default function EmojiPickerBackgrounds({
     "../../../images/postbackgrounds/8.jpg",
     "../../../images/postbackgrounds/9.jpg",
   ];
+
+  // adds the selected background to the text
   const backgroundHanlder = (i) => {
-    bgRef.current.style.backgroundImage = `url(${postBackgrounds[i]})`;
-    setBackground(postBackgrounds[i]);
-    bgRef.current.classList.add("bgHandler");
+    backgroundRef.current.style.backgroundImage = `url(${backgrounds[i]})`;
+    setBackground(backgrounds[i]);
+    backgroundRef.current.classList.add("bgHandler");
   };
+
+  // removes any previously selected background
   const removeBackground = (i) => {
-    bgRef.current.style.backgroundImage = "";
+    backgroundRef.current.style.backgroundImage = "";
     setBackground("");
-    bgRef.current.classList.remove("bgHandler");
+    backgroundRef.current.classList.remove("bgHandler");
   };
-  const sm = useMediaQuery({
+
+  // media query for small screen to a scroll to the background options displayed
+  const smallScreen = useMediaQuery({
     query: "(max-width:550px)",
   });
+
   return (
-    <div className={type2 ? "images_input" : ""}>
-      <div className={!type2 ? "flex_center" : ""} ref={bgRef}>
+    // checks if the user wants to post images, text or text with a background image and renders accordingly
+    <div className={input_type ? "img_input" : ""}>
+      {/* If the user selets a background for the text, the text is aligned in the center else in the left */}
+      <div className={!input_type ? "flex_center" : ""} ref={backgroundRef}>
         <textarea
           ref={textRef}
           maxLength="250"
           value={text}
           placeholder={`What's on your mind, ${user.first_name}`}
-          className={`post_input ${type2 ? "input2" : ""} ${
-            sm && !background && "l0"
+          className={`posts_input ${input_type ? "input_withimg" : ""} ${
+            smallScreen && !background && "l0"
           }`}
           onChange={(e) => setText(e.target.value)}
           style={{
@@ -72,34 +85,35 @@ export default function EmojiPickerBackgrounds({
           }}
         ></textarea>
       </div>
-      <div className={!type2 ? "post_emojis_wrap" : ""}>
+      <div className={!input_type ? "post_wrap_emoji" : ""}>
         {picker && (
           <div
-            className={`comment_emoji_picker ${
-              type2 ? "movepicker2" : "rlmove"
+            className={`comment_emojis ${
+              input_type ? "move_picker" : "move_r"
             }`}
           >
-            <Picker onEmojiClick={handleEmoji} />
+            <Picker onEmojiClick={handleEmojis} />
           </div>
         )}
-        {!type2 && (
+        {/* if the user is not posting pictures, the colurful icon is a toggle that allows user to pick a background */}
+        {!input_type && (
           <img
             src="../../../icons/colorful.png"
             alt=""
             onClick={() => {
-              setShowBgs((prev) => !prev);
+              setshowBackgrounds((prev) => !prev);
             }}
           />
         )}
-        {!type2 && showBgs && (
-          <div className="post_backgrounds">
+        {!input_type && showBackgrounds && (
+          <div className="backgrounds">
             <div
-              className="no_bg"
+              className="no_background"
               onClick={() => {
                 removeBackground();
               }}
             ></div>
-            {postBackgrounds.map((bg, i) => (
+            {backgrounds.map((bg, i) => (
               <img
                 src={bg}
                 key={i}
@@ -113,7 +127,7 @@ export default function EmojiPickerBackgrounds({
         )}
 
         <i
-          className={`emoji_icon_large ${type2 ? "moveleft" : ""}`}
+          className={`emoji_icon_large ${input_type ? "move_l" : ""}`}
           onClick={() => {
             setPicker((prev) => !prev);
           }}

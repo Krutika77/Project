@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import "./style.css";
-import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
-import AddToYourPost from "./AddToYourPost";
-import ImagePreview from "./ImagePreview";
+import EmojiBackgrounds from "./EmojiBackgrounds";
+import AddPost from "./AddToPost";
+import ImgPreview from "./ImgPreview";
 import useClickOutside from "../../helpers/clickOutside";
 import { createPost } from "../../functions/post";
 import PulseLoader from "react-spinners/PulseLoader";
-import PostError from "./PostError";
+import CreatePostError from "./CreatePostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
 export default function CreatePostPopup({
@@ -23,11 +23,16 @@ export default function CreatePostPopup({
   const [error, setError] = useState("");
   const [images, setImages] = useState([]);
   const [background, setBackground] = useState("");
+  // to hide the popup when clicked outside the box
   useClickOutside(popup, () => {
     setVisible(false);
   });
+  // populates the database when user creates and submits a post
+  // once a post is created succfully, the post is displayed in the home and profile page with other posts
   const postSubmit = async () => {
+    // if its a post with a background image and text
     if (background) {
+      // a loader is displayed while the post is being created and saved in the database
       setLoading(true);
       const response = await createPost(
         null,
@@ -37,6 +42,7 @@ export default function CreatePostPopup({
         user.id,
         user.token
       );
+      // Once the backend operations are done, the loader is not displayed anymore
       setLoading(false);
       if (response.status === "ok") {
         dispatch({
@@ -49,6 +55,7 @@ export default function CreatePostPopup({
       } else {
         setError(response);
       }
+      // if its a post with images
     } else if (images && images.length) {
       setLoading(true);
       const postImages = images.map((img) => {
@@ -82,6 +89,7 @@ export default function CreatePostPopup({
       } else {
         setError(res);
       }
+      // if its a post with just text
     } else if (text) {
       setLoading(true);
       const response = await createPost(
@@ -108,11 +116,14 @@ export default function CreatePostPopup({
       console.log("nothing");
     }
   };
+
   return (
+    // Blurs the background and displays a create post popup
     <div className="blur">
-      <div className="postBox" ref={popup}>
-        {error && <PostError error={error} setError={setError} />}
-        <div className="box_header">
+      <div className="post_box" ref={popup}>
+        {error && <CreatePostError error={error} setError={setError} />}
+        <div className="post_box_header">
+          {/* Exit create post */}
           <div
             className="small_circle"
             onClick={() => {
@@ -123,23 +134,24 @@ export default function CreatePostPopup({
           </div>
           <span>Create Post</span>
         </div>
-        <div className="box_profile">
-          <img src={user.picture} alt="" className="box_profile_img" />
-          <div className="box_col">
-            <div className="box_profile_name">
+        {/* Creater info */}
+        <div className="creater_profile">
+          <img src={user.picture} alt="" className="creater_profile_img" />
+          <div className="create_column">
+            <div className="creater_profile_name">
               {user.first_name} {user.last_name}
             </div>
-            <div className="box_privacy">
+            <div className="creater_privacy">
               <img src="../../../icons/public.png" alt="" />
               <span>Public</span>
               <i className="arrowDown_icon"></i>
             </div>
           </div>
         </div>
-
+        {/* previews for different posts */}
         {!showPrev ? (
           <>
-            <EmojiPickerBackgrounds
+            <EmojiBackgrounds
               text={text}
               user={user}
               setText={setText}
@@ -149,7 +161,7 @@ export default function CreatePostPopup({
             />
           </>
         ) : (
-          <ImagePreview
+          <ImgPreview
             text={text}
             user={user}
             setText={setText}
@@ -160,14 +172,16 @@ export default function CreatePostPopup({
             setError={setError}
           />
         )}
-        <AddToYourPost setShowPrev={setShowPrev} />
+        <AddPost setShowPrev={setShowPrev} />
+        {/* Submit */}
         <button
-          className="post_submit"
+          className="submit_post_btn"
           onClick={() => {
             postSubmit();
           }}
           disabled={loading}
         >
+          {/* loader */}
           {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
         </button>
       </div>

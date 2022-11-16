@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
+import EmojiBackgrounds from "./EmojiBackgrounds";
 
-export default function ImagePreview({
+export default function Imgpreview({
   text,
   user,
   setText,
@@ -10,7 +10,8 @@ export default function ImagePreview({
   setShowPrev,
   setError,
 }) {
-  const imageInputRef = useRef(null);
+  const ipimgRef = useRef(null);
+  // reads the selected input images and stores them in the images array if type and size is compatible
   const handleImages = (e) => {
     let files = Array.from(e.target.files);
     files.forEach((img) => {
@@ -39,32 +40,28 @@ export default function ImagePreview({
     });
   };
   return (
-    <div className="overflow_a scrollbar">
-      <EmojiPickerBackgrounds text={text} user={user} setText={setText} type2 />
-      <div className="add_pics_wrap">
+    <div className="overflow scrollbar">
+      <EmojiBackgrounds text={text} user={user} setText={setText} input_type />
+      <div className="addimgs_wrap">
         <input
           type="file"
           accept="image/jpeg,image/png,image/webp,image/gif"
           multiple
           hidden
-          ref={imageInputRef}
+          ref={ipimgRef}
           onChange={handleImages}
         />
         {images && images.length ? (
-          <div className="add_pics_inside1 p0">
-            <div className="preview_actions">
-              <button className="hover1">
-                <i className="edit_icon"></i>
-                Edit
-              </button>
+          <div className="addimgs_inside p0">
+            <div className="preview_add">
               <button
                 className="hover1"
                 onClick={() => {
-                  imageInputRef.current.click();
+                  ipimgRef.current.click();
                 }}
               >
                 <i className="addPhoto_icon"></i>
-                Add Photos/Videos
+                Add Photos/GIFs
               </button>
             </div>
             <div
@@ -75,30 +72,32 @@ export default function ImagePreview({
             >
               <i className="exit_icon"></i>
             </div>
+            {/* preview displayed based on the number of images selected */}
             <div
               className={
                 images.length === 1
-                  ? "preview1"
+                  ? "preview_1"
                   : images.length === 2
-                  ? "preview2"
+                  ? "preview_2"
                   : images.length === 3
-                  ? "preview3"
+                  ? "preview_3"
                   : images.length === 4
-                  ? "preview4 "
+                  ? "preview_4 "
                   : images.length === 5
-                  ? "preview5"
+                  ? "preview_5"
                   : images.length % 2 === 0
-                  ? "preview6"
-                  : "preview6 singular_grid"
+                  ? "preview_6"
+                  : "preview_6 singular_grid"
               }
             >
+              {/* maps images to preview */}
               {images.map((img, i) => (
                 <img src={img} key={i} alt="" />
               ))}
             </div>
           </div>
         ) : (
-          <div className="add_pics_inside1">
+          <div className="addimgs_inside">
             <div
               className="small_white_circle"
               onClick={() => {
@@ -108,26 +107,19 @@ export default function ImagePreview({
               <i className="exit_icon"></i>
             </div>
             <div
-              className="add_col"
+              className="add_column"
               onClick={() => {
-                imageInputRef.current.click();
+                ipimgRef.current.click();
               }}
             >
-              <div className="add_circle">
+              <div className="add_small_circle">
                 <i className="addPhoto_icon"></i>
               </div>
-              <span>Add Photos/Videos</span>
+              <span>Add Photos/Gif</span>
               <span>or drag and drop</span>
             </div>
           </div>
         )}
-        <div className="add_pics_inside2">
-          <div className="add_circle">
-            <i className="phone_icon"></i>
-          </div>
-          <div className="mobile_text">Add phots from your mobile device.</div>
-          <span className="addphone_btn">Add</span>
-        </div>
       </div>
     </div>
   );
