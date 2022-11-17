@@ -10,33 +10,37 @@ import {
   Search,
 } from "../../svg";
 import { useSelector } from "react-redux";
-import SearchMenu from "./SearchMenu";
+import SearchUsers from "./SearchUsers";
 import { useRef, useState } from "react";
-import AllMenu from "./AllMenu";
+import InfoMenu from "./InfoMenu";
 import useClickOutside from "../../helpers/clickOutside";
-import UserMenu from "./userMenu";
+import SettingsMenu from "./settingsMenu";
+
 export default function Header({ page, getAllPosts }) {
   const { user } = useSelector((user) => ({ ...user }));
   const color = "#65676b";
-  const [showSearchMenu, setShowSearchMenu] = useState(false);
-  const [showAllMenu, setShowAllMenu] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const allmenu = useRef(null);
-  const usermenu = useRef(null);
-  useClickOutside(allmenu, () => {
-    setShowAllMenu(false);
+  const [showSearchUser, setshowSearchUser] = useState(false);
+  const [showInfoMenu, setshowInfoMenu] = useState(false);
+  const [showSettingsMenu, setshowSettingsMenu] = useState(false);
+  const infomenu = useRef(null);
+  const settingsmenu = useRef(null);
+
+  // to hide all open menus when clicked ouside the open field
+  useClickOutside(infomenu, () => {
+    setshowInfoMenu(false);
   });
-  useClickOutside(usermenu, () => {
-    setShowUserMenu(false);
+  useClickOutside(settingsmenu, () => {
+    setshowSettingsMenu(false);
   });
 
   return (
     <header>
+      {/* left of the header has the search field */}
       <div className="header_left">
         <div
-          className="search search1"
+          className="search_user search"
           onClick={() => {
-            setShowSearchMenu(true);
+            setshowSearchUser(true);
           }}
         >
           <Search color={color} />
@@ -47,14 +51,16 @@ export default function Header({ page, getAllPosts }) {
           />
         </div>
       </div>
-      {showSearchMenu && (
-        <SearchMenu
+      {showSearchUser && (
+        <SearchUsers
           color={color}
-          setShowSearchMenu={setShowSearchMenu}
+          setshowSearchUser={setshowSearchUser}
           token={user.token}
         />
       )}
+      {/* middle of the header has the link to the home and friends page */}
       <div className="header_middle">
+        {/* home */}
         <Link
           to="/"
           className={`middle_icon ${page === "home" ? "active" : "hover1"}`}
@@ -62,6 +68,7 @@ export default function Header({ page, getAllPosts }) {
         >
           {page === "home" ? <HomeActive /> : <Home color={color} />}
         </Link>
+        {/* friends */}
         <Link
           to="/friends"
           className={`middle_icon ${page === "friends" ? "active" : "hover1"}`}
@@ -69,7 +76,9 @@ export default function Header({ page, getAllPosts }) {
           {page === "friends" ? <FriendsActive /> : <Friends color={color} />}
         </Link>
       </div>
+      {/* right of the header has the profile link of the active user, the info menu and the settings menu */}
       <div className="header_right">
+        {/* link to profile page of the active user */}
         <Link
           to="/profile"
           className={`profile_link hover1 ${
@@ -79,13 +88,14 @@ export default function Header({ page, getAllPosts }) {
           <img src={user?.picture} alt="" />
           <span>{user?.first_name}</span>
         </Link>
+        {/* Info menu */}
         <div
-          className={`circle_icon hover1 ${showAllMenu && "active_header"}`}
-          ref={allmenu}
+          className={`circle_icon hover1 ${showInfoMenu && "active_header"}`}
+          ref={infomenu}
         >
           <div
             onClick={() => {
-              setShowAllMenu((prev) => !prev);
+              setshowInfoMenu((prev) => !prev);
             }}
           >
             <div style={{ transform: "translateY(2px)" }}>
@@ -93,15 +103,18 @@ export default function Header({ page, getAllPosts }) {
             </div>
           </div>
 
-          {showAllMenu && <AllMenu />}
+          {showInfoMenu && <InfoMenu />}
         </div>
+        {/* settings menu */}
         <div
-          className={`circle_icon hover1 ${showUserMenu && "active_header"}`}
-          ref={usermenu}
+          className={`circle_icon hover1 ${
+            showSettingsMenu && "active_header"
+          }`}
+          ref={settingsmenu}
         >
           <div
             onClick={() => {
-              setShowUserMenu((prev) => !prev);
+              setshowSettingsMenu((prev) => !prev);
             }}
           >
             <div style={{ transform: "translateY(2px)" }}>
@@ -109,7 +122,7 @@ export default function Header({ page, getAllPosts }) {
             </div>
           </div>
 
-          {showUserMenu && <UserMenu user={user} />}
+          {showSettingsMenu && <SettingsMenu user={user} />}
         </div>
       </div>
     </header>

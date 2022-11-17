@@ -1,7 +1,7 @@
-export default function DisplayAccessibility({ setVisible }) {
+export default function DisplayMode({ setVisible }) {
   return (
-    <div className="absolute_wrap">
-      <div className="absolute_wrap_header">
+    <div className="menu_wrap">
+      <div className="menu_wrap_header">
         <div
           className="circle hover1"
           onClick={() => {
@@ -12,18 +12,18 @@ export default function DisplayAccessibility({ setVisible }) {
         </div>
         Display
       </div>
-      <div className="mmenu_main">
+      <div className="settings_menu_item">
         <div className="small_circle" style={{ width: "50px" }}>
           <i className="dark_filled_icon"></i>
         </div>
-        <div className="mmenu_col">
-          <span className="mmenu_span1">Dark Mode</span>
-          <span className="mmenu_span2">
-            Adjust the appearance of Social to reduce glare and give your eyes a
-            break.
+        <div className="settings_menu_column">
+          <span className="menu_span_title">Dark Mode</span>
+          <span className="menu_span_text">
+            Adjust the appearance of Social to light or dark mode.
           </span>
         </div>
       </div>
+      {/* User can select to turn dark mode on or off via radio buttons */}
       <label htmlFor="darkOff" className="hover1">
         <span>Off</span>
         <input type="radio" name="dark" id="darkOff" />

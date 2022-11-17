@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function SettingsPrivacy({ setVisible }) {
   return (
-    <div className="absolute_wrap">
-      <div className="absolute_wrap_header">
+    <div className="menu_wrap">
+      <div className="menu_wrap_header">
         <div
           className="circle hover1"
           onClick={() => {
@@ -14,20 +14,22 @@ export default function SettingsPrivacy({ setVisible }) {
         </div>
         Settings & privacy
       </div>
+      {/* Settings option links back to the user profile page */}
       <Link to="/profile">
-        <div className="mmenu_item hover3">
+        <div className="settings_menu_options hover3">
           <div className="small_circle">
             <i className="settings_filled_icon"></i>
           </div>
           <span>Settings</span>
         </div>
       </Link>
+      {/* privacy shortcut takes the user to the password reset page*/}
       <Link to="/reset">
-        <div className="mmenu_item hover3">
+        <div className="settings_menu_options hover3">
           <div className="small_circle">
             <i className="privacy_shortcuts_icon"></i>
           </div>
-          <span>Privacy Shortcuts</span>
+          <span>Privacy Shortcut</span>
         </div>
       </Link>
     </div>

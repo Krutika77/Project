@@ -1,7 +1,9 @@
-export default function HelpSupport({ setVisible }) {
+export default function Support({ setVisible }) {
   return (
-    <div className="absolute_wrap">
-      <div className="absolute_wrap_header">
+    // help, report and feedback
+    // all three options open the cliend side email application where user can send an email to Social's admin
+    <div className="menu_wrap">
+      <div className="menu_wrap_header">
         <div
           className="circle hover1"
           onClick={() => {
@@ -14,31 +16,31 @@ export default function HelpSupport({ setVisible }) {
       </div>
       <div>
         <a href="mailto:socialwelfare.seva@gmail.com">
-          <div className="mmenu_item hover3">
+          <div className="settings_menu_options hover3">
             <div className="small_circle">
               <i className="help_center_icon"></i>
             </div>
-            <span>Help Center</span>
+            <span>Need Help?</span>
           </div>
         </a>
       </div>
       <div>
         <a href="mailto:socialwelfare.seva@gmail.com">
-          <div className="mmenu_item hover3">
+          <div className="settings_menu_options hover3">
             <div className="small_circle">
               <i className="email_icon"></i>
             </div>
-            <span>Support Inbox</span>
+            <span>Feedback</span>
           </div>
         </a>
       </div>
       <div>
         <a href="mailto:socialwelfare.seva@gmail.com">
-          <div className="mmenu_item hover3">
+          <div className="settings_menu_options hover3">
             <div className="small_circle">
               <i className="info_filled_icon"></i>
             </div>
-            <span>Report a Problem</span>
+            <span>Report an Issue</span>
           </div>
         </a>
       </div>
