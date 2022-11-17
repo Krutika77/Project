@@ -1,6 +1,7 @@
 import PropagateLoader from "react-spinners/PropagateLoader";
-export default function ActivateForm({ type, header, text, loading }) {
+export default function ActivationPopup({ type, header, text, loading }) {
   return (
+    // popup text to show weather account was successfully activated or not
     <div className="blur">
       <div className="popup">
         <div

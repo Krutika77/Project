@@ -5,11 +5,12 @@ import CreatePostSection from "../../components/createPostSection";
 import Header from "../../components/header";
 import LeftHome from "../../components/home/left";
 import RightHome from "../../components/home/right";
-import ActivateForm from "./ActivateForm";
+import ActivationPopup from "./activationPopup";
 import "./style.css";
 import axios from "axios";
 import Cookies from "js-cookie";
-export default function Activate() {
+
+export default function Activation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((user) => ({ ...user }));
@@ -17,9 +18,11 @@ export default function Activate() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const { token } = useParams();
+
   useEffect(() => {
     activateAccount();
   }, []);
+  // activate user account through email verification link
   const activateAccount = async () => {
     try {
       setLoading(true);
@@ -33,12 +36,13 @@ export default function Activate() {
         }
       );
       setSuccess(data.message);
+      // set verify to true
       Cookies.set("user", JSON.stringify({ ...user, verified: true }));
       dispatch({
         type: "VERIFY",
         payload: true,
       });
-
+      // redirect to home page
       setTimeout(() => {
         navigate("/");
       }, 3000);
@@ -49,24 +53,28 @@ export default function Activate() {
       }, 3000);
     }
   };
+
   return (
     <div className="home">
+      {/* if account activated successfully */}
       {success && (
-        <ActivateForm
+        <ActivationPopup
           type="success"
           header="Account verification succeded."
           text={success}
           loading={loading}
         />
       )}
+      {/* if an error occurs while activating the account */}
       {error && (
-        <ActivateForm
+        <ActivationPopup
           type="error"
           header="Account verification failed."
           text={error}
           loading={loading}
         />
       )}
+      {/* default home page display */}
       <Header />
       <LeftHome user={user} />
       <div className="home_middle">

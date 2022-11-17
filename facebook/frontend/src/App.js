@@ -5,7 +5,7 @@ import Home from "./pages/home";
 import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 import { useSelector } from "react-redux";
-import Activate from "./pages/home/activate";
+import Activation from "./pages/home/activation";
 import Reset from "./pages/reset";
 import CreatePostPopup from "./components/createPostPopup";
 import { useEffect, useReducer, useState } from "react";
@@ -100,7 +100,7 @@ function App() {
             }
             exact
           />
-          <Route path="/activate/:token" element={<Activate />} exact />
+          <Route path="/activate/:token" element={<Activation />} exact />
         </Route>
         <Route element={<NotLoggedInRoutes />}>
           <Route path="/login" element={<Login />} exact />
