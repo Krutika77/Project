@@ -13,29 +13,29 @@
 @media (max-width: 1175px) {
   .create_post,
   .post,
-  .send_verification {
+  .verify_user {
     width: 84%;
   }
   .home_middle {
     margin-left: 5%;
   }
-  .right_home {
+  .home_right {
     width: 18vw;
   }
 }
 @media (max-width: 1030px) {
-  .left_home .left_link span,
-  .left_home .left_link .col,
-  .shortcut,
-  .shortcut_item span,
+  .home_left .home_left_list span,
+  .home_left .home_left_list .col,
+  .accounts,
+  .accounts_item span,
   .splitter,
   .copyright {
     display: none;
   }
-  .left_home {
+  .home_left {
     width: 70px;
   }
-  .left_link {
+  .home_left_list {
     background: var(--bg-third);
     width: 55px;
     height: 55px;
@@ -47,7 +47,7 @@
     position: absolute;
     margin-left: 55px;
   }
-  .right_home {
+  .home_right {
     width: 20vw;
   }
   .contacts_header_right {
@@ -58,20 +58,20 @@
   }
   .create_post,
   .post,
-  .send_verification {
+  .verify_user {
     width: 100%;
   }
 }
 @media (max-width: 960px) {
   .create_post,
   .post,
-  .send_verification {
+  .verify_user {
     width: 93%;
   }
   .home_middle {
     margin-right: 10%;
   }
-  .right_home {
+  .home_right {
     left: 78%;
     width: 20vw;
   }
@@ -86,12 +86,12 @@
   }
 }
 @media (max-width: 885px) {
-  .right_home {
+  .home_right {
     display: none;
   }
   .create_post,
   .post,
-  .send_verification {
+  .verify_user {
     width: 110%;
   }
   .home_middle {
@@ -99,7 +99,7 @@
   }
 }
 @media (max-width: 805px) {
-  .left_home::-webkit-scrollbar {
+  .home_left::-webkit-scrollbar {
     display: none;
   }
   .popup {
@@ -107,7 +107,7 @@
   }
 }
 @media (max-width: 620px) {
-  .left_home {
+  .home_left {
     display: none;
   }
   .home_middle {
@@ -116,7 +116,7 @@
   }
   .create_post,
   .post,
-  .send_verification {
+  .verify_user {
     width: 100%;
   }
   .create_post_icon {
@@ -140,7 +140,7 @@
     width: 98%;
     margin: 1rem auto;
   }
-  .send_verification {
+  .verify_user {
     width: 98%;
     margin: 0 auto;
   }

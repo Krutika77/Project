@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./style.css";
 import axios from "axios";
-export default function SendVerification({ user }) {
+export default function UserVerification({ user }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // Sends verification email to the user
   const sendVerificationLink = async () => {
     try {
       const { data } = await axios.post(
@@ -21,17 +23,17 @@ export default function SendVerification({ user }) {
     }
   };
   return (
-    <div className="send_verification">
+    <div className="verify_user">
       <span>
-        Your account is not verified,verify your account before it gets deleted
-        after a month from creating.
+        Your account is not verified. Please verify your account else it will
+        deleted automatically after a month.
       </span>
       <a
         onClick={() => {
           sendVerificationLink();
         }}
       >
-        click here to resend verification link
+        click here to resend verification link.
       </a>
       {success && <div className="success_text">{success}</div>}
       {error && <div className="error_text">{error}</div>}

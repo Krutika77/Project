@@ -1,15 +1,9 @@
-import { Dots } from "../../../svg";
 import "./style.css";
-export default function RightHome({ user }) {
-  const color = "#65676b";
+
+export default function RightHome() {
   return (
-    <div className="right_home">
-      <div className="project_header">
-        Project Social
-        <div className="contacts_header_right hover1">
-          <Dots color={color} />
-        </div>
-      </div>
+    <div className="home_right">
+      <div className="project_header">Project Social</div>
       <div className="splitter1"></div>
     </div>
   );

@@ -1,4 +1,4 @@
-.send_verification {
+.verify_user {
   background: var(--bg-primary);
   box-shadow: 0 1px 2px var(--shadow-1);
   padding: 20px;
@@ -8,10 +8,10 @@
   flex-direction: column;
   border-radius: 10px;
 }
-.send_verification a {
+.verify_user a {
   color: var(--green-color);
   cursor: pointer;
 }
-.send_verification a:hover {
+.verify_user a:hover {
   text-decoration: underline;
 }

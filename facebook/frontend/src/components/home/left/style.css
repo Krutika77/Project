@@ -1,4 +1,4 @@
-.left_home {
+.home_left {
   position: fixed;
   margin-top: 58px;
   left: 6px;
@@ -10,7 +10,7 @@
   padding-bottom: 5rem;
   user-select: none;
 }
-.left_link {
+.home_left_list {
   display: flex;
   align-items: center;
   padding: 5px 10px;
@@ -20,14 +20,14 @@
   font-size: 14px;
   margin-bottom: 2px;
 }
-.left_link img {
+.home_left_list img {
   width: 36px;
   height: 36px;
   border-radius: 50%;
   margin-right: 11px;
   vertical-align: -0.25em;
 }
-.left_link span {
+.home_left_list span {
   margin-bottom: 4px;
   margin-left: 1px;
 }
@@ -35,28 +35,7 @@
   margin-left: 2px;
   transform: translateY(-2px);
 }
-.col_1 {
-  transform: translateX(-1px);
-}
-.col_2 {
-  position: relative;
-  font-size: 12px;
-  color: var(--green-color);
-  margin-left: 9px;
-  margin-top: 2px;
-  font-weight: normal;
-}
-.col_2::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--green-color);
-  position: absolute;
-  left: -10px;
-  bottom: 2px;
-}
-.rotate360 {
+.rotate_icon {
   transform: rotate(180deg);
 }
 .splitter {
@@ -64,7 +43,7 @@
   background: var(--divider);
   margin: 9px 2px 0 12px;
 }
-.shortcut {
+.accounts {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,17 +54,10 @@
   color: var(--color-secondary);
   padding: 13px 10px 11px 10px;
 }
-.edit_shortcut {
-  font-size: 14px;
-  color: var(--green-color);
-  display: none;
-
-  cursor: pointer;
-}
-.shortcut:hover .edit_shortcut {
+.accounts:hover {
   display: block;
 }
-.shortcut_item {
+.accounts_item {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -95,13 +67,13 @@
   font-size: 14px;
   font-weight: 500;
 }
-.shortcut_item img {
+.accounts_item img {
   width: 36px;
   height: 36px;
   border-radius: 8px;
   object-fit: cover;
 }
-.shortcut_item span {
+.accounts_item span {
   margin-bottom: 3px;
 }
 .copyright {
@@ -111,11 +83,4 @@
   font-size: 12px;
   color: var(--color-secondary);
   width: 15vw;
-}
-.relative_copyright {
-  position: relative;
-  width: 97%;
-  margin-top: 2rem;
-  font-size: 12px;
-  color: var(--color-secondary);
 }
