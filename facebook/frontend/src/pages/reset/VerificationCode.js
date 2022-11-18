@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import LoginInput from "../../components/inputs/loginInput";
 import * as Yup from "yup";
 import axios from "axios";
-export default function CodeVerification({
+
+export default function VerificationCode({
   code,
   setCode,
   error,
@@ -13,14 +14,17 @@ export default function CodeVerification({
   setError,
   userInfos,
 }) {
-  const validateCode = Yup.object({
+  // validate the code length and required
+  const codeValidation = Yup.object({
     code: Yup.string()
-      .required("Code is required")
-      .min("5", "Code must be 5 characters.")
-      .max("5", "Code must be 5 characters."),
+      .required("Verification code is required")
+      .min("5", "Verification code must be 5 characters long")
+      .max("5", "Verification code must be 5 characters long"),
   });
+
   const { email } = userInfos;
-  const verifyCode = async () => {
+  // verifies if the code matches the one sent to the user via email
+  const codeVerification = async () => {
     try {
       setLoading(true);
       await axios.post(
@@ -35,24 +39,24 @@ export default function CodeVerification({
       setError(error.response.data.message);
     }
   };
+
   return (
-    <div className="reset_form">
-      <div className="reset_form_header">Code verification</div>
-      <div className="reset_form_text">
-        Please enter code that been sent to your email.
-      </div>
+    <div className="reset_password">
+      <div className="reset_header">Code verification</div>
+      <div className="reset_text">Please enter code sent to your email.</div>
       <Formik
         enableReinitialize
         initialValues={{
           code,
         }}
-        validationSchema={validateCode}
+        validationSchema={codeValidation}
         onSubmit={() => {
-          verifyCode();
+          codeVerification();
         }}
       >
         {(formik) => (
           <Form>
+            {/* code input field */}
             <LoginInput
               type="text"
               name="code"
@@ -60,10 +64,12 @@ export default function CodeVerification({
               placeholder="Code"
             />
             {error && <div className="error_text">{error}</div>}
-            <div className="reset_form_btns">
+            <div className="reset_buttons">
+              {/* takes user back to the login page */}
               <Link to="/login" className="gray_btn">
                 Cancel
               </Link>
+              {/* takes user to the reset password page */}
               <button type="submit" className="green_btn">
                 Continue
               </button>

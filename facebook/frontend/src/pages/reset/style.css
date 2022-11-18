@@ -15,24 +15,24 @@
 .reset_header img {
   width: 160px;
 }
-.right_reset {
+.reset_header_right {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.right_reset img {
+.reset_header_right img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.reset_wrap {
+.reset_page_wrapper {
   height: 67vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 10px;
 }
-.reset_form {
+.reset_password {
   position: relative;
   background: var(--bg-primary);
   box-shadow: 0 1px 2px var(--shadow-1);
@@ -50,8 +50,10 @@
 .reset_text {
   padding: 15px;
   font-size: 17px;
+  margin-left: 15%;
+  margin-bottom: 10px;
 }
-.reset_form form {
+.reset_password form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,43 +74,43 @@
 .reset_buttons button {
   width: 90px;
 }
-.reset_grid {
+.form_grid {
   display: grid;
   grid-template-columns: 1fr;
   font-size: 15px;
   color: var(--color-secondary);
 }
-.reset_left {
+.form_left {
   padding: 15px;
 }
-.reset_grid label {
+.form_grid label {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   padding: 5px;
 }
-.reset_left input {
+.form_left input {
   width: 20px;
   height: 20px;
 }
-.label_col {
+.column_label {
   display: flex;
   flex-direction: column;
 }
-.reset_right {
+.form_right {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.reset_right img {
+.form_right img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
 }
-.dynamic_height {
+.reset_height {
   height: 430px;
 }
 .confirm_password_err {
@@ -125,17 +127,17 @@
 }
 /*----Queries----*/
 @media (max-width: 350px) {
-  .reset_form {
+  .reset_password {
     height: fit-content;
   }
 
-  .reset_form form input {
+  .reset_password form input {
     width: 290px;
   }
-  .reset_form .input_error {
+  .reset_password .input_error {
     width: 290px;
   }
-  .reset_form .error_icon {
+  .reset_password .error_icon {
     right: 20px;
   }
   .reset_buttons {
@@ -148,13 +150,13 @@
   }
 }
 @media (min-width: 650px) {
-  .reset_form {
+  .reset_password {
     width: 570px;
   }
-  .reset_grid {
+  .form_grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .dynamic_height {
+  .reset_height {
     height: 330px;
   }
   .reset_buttons {
@@ -163,12 +165,12 @@
 }
 
 @media (min-width: 850px) and (max-width: 1050px) {
-  .reset_form .input_error {
+  .reset_password .input_error {
     left: 0;
     top: -60px;
     width: 100%;
   }
-  .reset_form .error_left {
+  .reset_password .error_left {
     border-top: 10px solid #b94a48;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
@@ -179,7 +181,7 @@
   }
 }
 @media (min-width: 1050px) {
-  .reset_form .fullscreen_input_error {
+  .reset_password .fullscreen_input_error {
     width: 320px;
     left: -92%;
   }

@@ -11,6 +11,7 @@ export default function SendEmail({
   loading,
   setLoading,
 }) {
+  // to send and email to the user with the 5 digit verification code
   const sendEmail = async () => {
     try {
       setLoading(true);
@@ -27,36 +28,39 @@ export default function SendEmail({
     }
   };
   return (
-    <div className="reset_form dynamic_height">
-      <div className="reset_form_header">Reset Your Password</div>
-      <div className="reset_grid">
-        <div className="reset_left">
-          <div className="reset_form_text">
-            How do you want to receive the code to reset your password?
+    <div className="reset_password reset_height">
+      <div className="reset_header">Reset Your Password</div>
+      <div className="form_grid">
+        <div className="form_left">
+          <div className="reset_text">
+            Receive the password reset code via email?
           </div>
+          {/* confirmin email */}
           <label htmlFor="email" className="hover1">
             <input type="radio" name="" id="email" checked readOnly />
-            <div className="label_col">
-              <span>Send code via email</span>
+            <div className="column_label">
               <span>{userInfos.email}</span>
             </div>
           </label>
         </div>
-        <div className="reset_right">
+        {/* profile picture from the account associated and email */}
+        <div className="form_right">
           <img src={userInfos.picture} alt="" />
           <span>{userInfos.email}</span>
           <span>Social user</span>
         </div>
       </div>
       {error && (
-        <div className="error_text" style={{ padding: "10px" }}>
+        <div className="error_msg" style={{ padding: "10px" }}>
           {error}
         </div>
       )}
-      <div className="reset_form_btns">
+      <div className="reset_buttons">
+        {/* takes user back to the login page */}
         <Link to="/login" className="gray_btn">
           Not You ?
         </Link>
+        {/* send email and goes to code verification  */}
         <button
           onClick={() => {
             sendEmail();

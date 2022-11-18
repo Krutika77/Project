@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import LoginInput from "../../components/inputs/loginInput";
 import * as Yup from "yup";
 import axios from "axios";
-export default function SearchAccount({
+
+export default function FindAccount({
   email,
   setEmail,
   error,
@@ -12,16 +13,17 @@ export default function SearchAccount({
   setUserInfos,
   setVisible,
 }) {
-  const validateEmail = Yup.object({
+  // checks weather a valid email is provided or not
+  const emailValidation = Yup.object({
     email: Yup.string()
-      .required("Email address ir required.")
-      .email("Must be a valid email address.")
-      .max(50, "Email address can't be more than 50 characters."),
+      .required("Email address is required")
+      .email("Please enter a valid email address")
+      .max(60, "Email address can't be more than 60 characters long"),
   });
-  const handleSearch = async () => {
+  // looks through the database to check if an account is linked to the given email
+  const handleAccountSearch = async () => {
     try {
       setLoading(true);
-
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/findUser`,
         { email }
@@ -35,36 +37,40 @@ export default function SearchAccount({
       setError(error.response.data.message);
     }
   };
+
   return (
-    <div className="reset_form">
-      <div className="reset_form_header">Find Your Account</div>
-      <div className="reset_form_text">
-        Please enter your email address or mobile number to search for your
-        account.
+    <div className="reset_password">
+      <div className="reset_header">Find Your Account</div>
+      <div className="reset_text">
+        Please enter the email associated to your account.
       </div>
+      {/* reset email for new search */}
       <Formik
         enableReinitialize
         initialValues={{
           email,
         }}
-        validationSchema={validateEmail}
+        validationSchema={emailValidation}
         onSubmit={() => {
-          handleSearch();
+          handleAccountSearch();
         }}
       >
         {(formik) => (
           <Form>
+            {/* input email */}
             <LoginInput
               type="text"
               name="email"
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address or phone number"
+              placeholder="Email address"
             />
             {error && <div className="error_text">{error}</div>}
-            <div className="reset_form_btns">
+            <div className="reset_buttons">
+              {/* cancel takes user to the login page */}
               <Link to="/login" className="gray_btn">
                 Cancel
               </Link>
+              {/* submit takes user to SendEmail page */}
               <button type="submit" className="green_btn">
                 Search
               </button>

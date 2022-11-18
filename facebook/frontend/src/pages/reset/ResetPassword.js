@@ -3,32 +3,35 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginInput from "../../components/inputs/loginInput";
 import * as Yup from "yup";
 import axios from "axios";
-export default function ChangePassword({
+
+export default function ResetPassword({
   password,
   setPassword,
   conf_password,
   setConf_password,
   error,
-  laoding,
   setLoading,
   userInfos,
+  loading,
   setError,
 }) {
   const navigate = useNavigate();
-  const validatePassword = Yup.object({
+  // validates the length of the new password
+  const passwordValidation = Yup.object({
     password: Yup.string()
       .required(
-        "Enter a combination of at least six numbers,letters and punctuation marks(such as ! and &)."
+        "Enter at least 6 characters (can be a combination of numbers,letters and punctuation marks)"
       )
-      .min(6, "Password must be atleast 6 characters.")
-      .max(36, "Password can't be more than 36 characters"),
-
+      .min(6, "Password must be atleast 6 characters long")
+      .max(26, "Password can not be more than 26 characters long"),
+    // checks weather both the passwords (password and confirm password) matches
     conf_password: Yup.string()
-      .required("Confirm your password.")
-      .oneOf([Yup.ref("password")], "Passwords must match."),
+      .required("Confirm/retype password.")
+      .oneOf([Yup.ref("password")], "Both the passwords must match."),
   });
   const { email } = userInfos;
-  const changePassword = async () => {
+  // changes the password associated to the given email and navigates to the home page
+  const resetPassword = async () => {
     try {
       setLoading(true);
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/changePassword`, {
@@ -43,28 +46,30 @@ export default function ChangePassword({
     }
   };
   return (
-    <div className="reset_form" style={{ height: "310px" }}>
-      <div className="reset_form_header">Change Password</div>
-      <div className="reset_form_text">Pick a strong password</div>
+    <div className="reset_password" style={{ height: "310px" }}>
+      <div className="reset_header">Change Password</div>
+      <div className="reset_text">Pick a strong password</div>
       <Formik
         enableReinitialize
         initialValues={{
           password,
           conf_password,
         }}
-        validationSchema={validatePassword}
+        validationSchema={passwordValidation}
         onSubmit={() => {
-          changePassword();
+          resetPassword();
         }}
       >
         {(formik) => (
           <Form>
+            {/* enter password */}
             <LoginInput
               type="password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="New password"
             />
+            {/* confirm password */}
             <LoginInput
               type="password"
               name="conf_password"
@@ -72,12 +77,12 @@ export default function ChangePassword({
               placeholder="Confirm new password"
               bottom
             />
-            {error && <div className="error_text">{error}</div>}
-            <div className="reset_form_btns">
+            {error && <div className="error_msg">{error}</div>}
+            <div className="reset_buttons">
               <Link to="/login" className="gray_btn">
                 Cancel
               </Link>
-              <button type="submit" className="blue_btn">
+              <button type="submit" className="green_btn">
                 Continue
               </button>
             </div>

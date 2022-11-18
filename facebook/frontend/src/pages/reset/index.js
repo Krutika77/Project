@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { useState } from "react";
-import SearchAccount from "./SearchAccount";
+import FindAccount from "./FindAccount";
 import SendEmail from "./SendEmail";
-import CodeVerification from "./CodeVerification";
+import VerificationCode from "./VerificationCode";
 import Footer from "../../components/login/Footer";
-import ChangePassword from "./ChangePassword";
+import ResetPassword from "./ResetPassword";
+
 export default function Reset() {
   const { user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ export default function Reset() {
   const [conf_password, setConf_password] = useState("");
   const [error, setError] = useState("");
   const [userInfos, setUserInfos] = useState("");
+
+  // for the logout button in header (if user is logged in)
   const logout = () => {
     Cookies.set("user", "");
     dispatch({
@@ -31,8 +34,9 @@ export default function Reset() {
     <div className="reset">
       <div className="reset_header">
         <img src="../../../icons/social.svg" alt="" />
+        {/* header top right has link to user's profile and a logout button(if the user is logged in) */}
         {user ? (
-          <div className="right_reset">
+          <div className="reset_header_right">
             <Link to="/profile">
               <img src={user.picture} alt="" />
             </Link>
@@ -46,14 +50,15 @@ export default function Reset() {
             </button>
           </div>
         ) : (
-          <Link to="/login" className="right_reset">
+          // if the user is not logged in, the header displays a login button that takes the user to the login page
+          <Link to="/login" className="reset_header_right">
             <button className="green_btn">Login</button>
           </Link>
         )}
       </div>
-      <div className="reset_wrap">
+      <div className="reset_page_wrapper">
         {visible === 0 && (
-          <SearchAccount
+          <FindAccount
             email={email}
             setEmail={setEmail}
             error={error}
@@ -75,7 +80,7 @@ export default function Reset() {
           />
         )}
         {visible === 2 && (
-          <CodeVerification
+          <VerificationCode
             user={user}
             code={code}
             setCode={setCode}
@@ -87,7 +92,7 @@ export default function Reset() {
           />
         )}
         {visible === 3 && (
-          <ChangePassword
+          <ResetPassword
             password={password}
             conf_password={conf_password}
             setConf_password={setConf_password}
