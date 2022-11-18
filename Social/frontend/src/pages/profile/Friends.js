@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 export default function Friends({ friends }) {
   return (
-    <div className="profile_card">
-      <div className="profile_card_header">
+    <div className="user_details_card">
+      <div className="user_details_header">
         Friends
         <Link to="/friends" className="profile_header_link">
           See all friends

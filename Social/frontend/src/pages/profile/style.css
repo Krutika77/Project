@@ -235,14 +235,14 @@
 }
 /*--Menu-------*/
 /*-----profile card--------*/
-.profile_card {
+.user_details_card {
   background: var(--bg-primary);
   border-radius: 10px;
   box-shadow: 0 1px 2px var(--shadow-1);
   padding: 10px 15px;
   margin-top: 15px;
 }
-.profile_card_header {
+.user_details_header {
   display: flex;
   align-items: center;
   justify-content: space-between;

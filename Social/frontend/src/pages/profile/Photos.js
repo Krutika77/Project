@@ -4,8 +4,8 @@ import AllPhotos from "./AllPhotos";
 export default function Photos({ username, token, photos }) {
   const [allPicsVisible, setAllPicsVisible] = useState(false);
   return (
-    <div className="profile_card">
-      <div className="profile_card_header">
+    <div className="user_details_card">
+      <div className="user_details_header">
         Photos
         <div
           className="profile_header_link"
