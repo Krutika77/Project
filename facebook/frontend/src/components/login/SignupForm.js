@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import { useState } from "react";
-import RegisterInput from "../inputs/registerInput";
+import SignupInput from "../inputs/signupInput";
 import * as Yup from "yup";
 import DateOfBirthSelect from "./DateOfBirthSelect";
 import GenderSelect from "./GenderSelect";
@@ -9,7 +9,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-export default function RegisterForm({ setVisible }) {
+
+export default function SignupForm({ setVisible }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userInfos = {
@@ -33,48 +34,52 @@ export default function RegisterForm({ setVisible }) {
     bDay,
     gender,
   } = user;
-  const yearTemp = new Date().getFullYear();
-  const handleRegisterChange = (e) => {
+  // default year filled in
+  const temp = new Date().getFullYear();
+  // gets the values as the user populates the fields
+  const handleSignupChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-  const years = Array.from(new Array(108), (val, index) => yearTemp - index);
+  // array of the last 108 years from the current year
+  const years = Array.from(new Array(108), (val, index) => temp - index);
+  // array of all the years
   const months = Array.from(new Array(12), (val, index) => 1 + index);
+  // array of the number of days depending on the month selected
   const getDays = () => {
     return new Date(bYear, bMonth, 0).getDate();
   };
   const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
-  const registerValidation = Yup.object({
+
+  // validations for length, required and type
+  const SignupValidation = Yup.object({
     first_name: Yup.string()
-      .required("What's your First name ?")
-      .min(2, "Fisrt name must be between 2 and 16 characters.")
-      .max(16, "Fisrt name must be between 2 and 16 characters.")
-      .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
+      .required("Please enter your first name")
+      .min(2, "First name must be 2 to 16 characters long")
+      .max(16, "First name must be 2 to 16 characters long")
+      .matches(/^[aA-zZ]+$/, "Please enter alphabets only"),
     last_name: Yup.string()
-      .required("What's your Last name ?")
-      .min(2, "Last name must be between 2 and 16 characters.")
-      .max(16, "Last name must be between 2 and 16 characters.")
-      .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
+      .required("Please enter your last name")
+      .min(2, "Last name must be 2 to 16 characters long")
+      .max(16, "Last name must be 2 to 16 characters long")
+      .matches(/^[aA-zZ]+$/, "Please enter only alphabets"),
     email: Yup.string()
-      .required(
-        "You'll need this when you log in and if you ever need to reset your password."
-      )
-      .email("Enter a valid email address."),
+      .required("Email required for each log in and password reset")
+      .email("Please enter a valid email address"),
     password: Yup.string()
       .required(
         "Enter a combination of at least six numbers,letters and punctuation marks(such as ! and &)."
       )
-      .min(6, "Password must be atleast 6 characters.")
-      .max(36, "Password can't be more than 36 characters"),
+      .min(6, "Password must be atleast 6 characters long")
+      .max(36, "Password can't be more than 36 characters long"),
   });
   const [dateError, setDateError] = useState("");
   const [genderError, setGenderError] = useState("");
-
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const registerSubmit = async () => {
+  // populate database with user infos on signup
+  const signupSubmit = async () => {
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/register`,
@@ -104,12 +109,13 @@ export default function RegisterForm({ setVisible }) {
     }
   };
   return (
+    // sign up popup
     <div className="blur">
-      <div className="register">
-        <div className="register_header">
+      <div className="signup">
+        <div className="signup_header">
           <i className="exit_icon" onClick={() => setVisible(false)}></i>
           <span>Sign Up</span>
-          <span>it's quick and easy</span>
+          <span>It'll only take a minute..</span>
         </div>
         <Formik
           enableReinitialize
@@ -123,66 +129,67 @@ export default function RegisterForm({ setVisible }) {
             bDay,
             gender,
           }}
-          validationSchema={registerValidation}
+          validationSchema={SignupValidation}
           onSubmit={() => {
             let current_date = new Date();
             let picked_date = new Date(bYear, bMonth - 1, bDay);
             let atleast14 = new Date(1970 + 14, 0, 1);
-            let noMoreThan70 = new Date(1970 + 70, 0, 1);
+            let noMoreThan98 = new Date(1970 + 98, 0, 1);
+            // checks if the user is between 14 to 98 years of age
             if (current_date - picked_date < atleast14) {
               setDateError(
-                "it looks like you(ve enetered the wrong info.Please make sure that you use your real date of birth."
+                "Only individuals with age 14 years and above can create an account"
               );
-            } else if (current_date - picked_date > noMoreThan70) {
+            } else if (current_date - picked_date > noMoreThan98) {
               setDateError(
-                "it looks like you(ve enetered the wrong info.Please make sure that you use your real date of birth."
+                "Only individuals under a certain age can create an account. Invaid birth year"
               );
             } else if (gender === "") {
               setDateError("");
-              setGenderError(
-                "Please choose a gender. You can change who can see this later."
-              );
+              setGenderError("Please select a gender");
             } else {
               setDateError("");
               setGenderError("");
-              registerSubmit();
+              signupSubmit();
             }
           }}
         >
+          {/*input form*/}
           {(formik) => (
-            <Form className="register_form">
-              <div className="reg_line">
-                <RegisterInput
+            <Form className="signup_form">
+              <div className="signup_line">
+                <SignupInput
                   type="text"
                   placeholder="First name"
                   name="first_name"
-                  onChange={handleRegisterChange}
+                  onChange={handleSignupChange}
                 />
-                <RegisterInput
+                <SignupInput
                   type="text"
                   placeholder="Surname"
                   name="last_name"
-                  onChange={handleRegisterChange}
+                  onChange={handleSignupChange}
                 />
               </div>
-              <div className="reg_line">
-                <RegisterInput
+              <div className="signup_line">
+                <SignupInput
                   type="text"
                   placeholder="Email address"
                   name="email"
-                  onChange={handleRegisterChange}
+                  onChange={handleSignupChange}
                 />
               </div>
-              <div className="reg_line">
-                <RegisterInput
+              <div className="signup_line">
+                <SignupInput
                   type="password"
                   placeholder="Password"
                   name="password"
-                  onChange={handleRegisterChange}
+                  onChange={handleSignupChange}
                 />
               </div>
-              <div className="reg_col">
-                <div className="reg_line_header">
+              {/*DOB drop-down*/}
+              <div className="signup_col">
+                <div className="signup_line_header">
                   Date of birth <i className="info_icon"></i>
                 </div>
                 <DateOfBirthSelect
@@ -192,32 +199,32 @@ export default function RegisterForm({ setVisible }) {
                   days={days}
                   months={months}
                   years={years}
-                  handleRegisterChange={handleRegisterChange}
+                  handleSignupChange={handleSignupChange}
                   dateError={dateError}
                 />
               </div>
-              <div className="reg_col">
-                <div className="reg_line_header">
+              {/* Gender select (radio buttons) */}
+              <div className="signup_col">
+                <div className="signup_line_header">
                   Gender <i className="info_icon"></i>
                 </div>
-
                 <GenderSelect
-                  handleRegisterChange={handleRegisterChange}
+                  handleSignupChange={handleSignupChange}
                   genderError={genderError}
                 />
               </div>
-              <div className="reg_infos">
+              <div className="signup_info">
                 By clicking Sign Up, you agree to our{" "}
                 <span>Terms, Data Policy &nbsp;</span>
-                and <span>Cookie Policy.</span> You may receive SMS
-                notifications from us and can opt out at any time.
+                and <span>Cookie Policy.</span>
               </div>
-              <div className="reg_btn_wrapper">
-                <button className="green_btn open_signup">Sign Up</button>
+              <div className="signup_button">
+                <button className="green_btn signup_popup">Sign Up</button>
               </div>
+              {/* page loader */}
               <DotLoader color="#51ae84" loading={loading} size={30} />
-              {error && <div className="error_text">{error}</div>}
-              {success && <div className="success_text">{success}</div>}
+              {error && <div className="error_msg">{error}</div>}
+              {success && <div className="success_msg">{success}</div>}
             </Form>
           )}
         </Formik>

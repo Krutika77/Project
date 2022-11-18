@@ -1,20 +1,23 @@
 import { useMediaQuery } from "react-responsive";
 
 export default function GenderSelect({ handleRegisterChange, genderError }) {
-  const view1 = useMediaQuery({
+  // media breakpoints
+  const min539 = useMediaQuery({
     query: "(min-width: 539px)",
   });
-  const view2 = useMediaQuery({
+  const min850 = useMediaQuery({
     query: "(min-width: 850px)",
   });
-  const view3 = useMediaQuery({
+  const min1170 = useMediaQuery({
     query: "(min-width: 1170px)",
   });
+
   return (
     <div
-      className="reg_grid"
-      style={{ marginBottom: `${genderError && !view3 ? "70px" : "0"}` }}
+      className="signup_grid"
+      style={{ marginBottom: `${genderError && !min1170 ? "70px" : "0"}` }}
     >
+      {/* select gender- male, female or non-binary */}
       <label htmlFor="male">
         Male
         <input
@@ -45,15 +48,12 @@ export default function GenderSelect({ handleRegisterChange, genderError }) {
           onChange={handleRegisterChange}
         />
       </label>
+      {/* error for eg. none selected */}
       {genderError && (
         <div
-          className={
-            !view3 ? "input_error" : "input_error input_error_select_large"
-          }
+          className={!min1170 ? "input_error" : "input_error large_input_err"}
         >
-          <div
-            className={!view3 ? "error_arrow_bottom" : "error_arrow_left"}
-          ></div>
+          <div className={!min1170 ? "error_bottom" : "error_left"}></div>
           {genderError}
         </div>
       )}

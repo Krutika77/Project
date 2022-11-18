@@ -10,20 +10,23 @@ export default function DateOfBirthSelect({
   handleRegisterChange,
   dateError,
 }) {
-  const view1 = useMediaQuery({
+  // screen breakpoints
+  const min539 = useMediaQuery({
     query: "(min-width: 539px)",
   });
-  const view2 = useMediaQuery({
+  const min850 = useMediaQuery({
     query: "(min-width: 850px)",
   });
-  const view3 = useMediaQuery({
+  const min1170 = useMediaQuery({
     query: "(min-width: 1170px)",
   });
+
   return (
     <div
-      className="reg_grid"
-      style={{ marginBottom: `${dateError && !view3 ? "90px" : "0"}` }}
+      className="signup_grid"
+      style={{ marginBottom: `${dateError && !min1170 ? "90px" : "0"}` }}
     >
+      {/* select birth date, month and year from drop-downs */}
       <select name="bDay" value={bDay} onChange={handleRegisterChange}>
         {days.map((day, i) => (
           <option value={day} key={i}>
@@ -45,15 +48,12 @@ export default function DateOfBirthSelect({
           </option>
         ))}
       </select>
+      {/* if error occurs like user not old enough */}
       {dateError && (
         <div
-          className={
-            !view3 ? "input_error" : "input_error input_error_select_large"
-          }
+          className={!min1170 ? "input_error" : "input_error large_input_err"}
         >
-          <div
-            className={!view3 ? "error_arrow_bottom" : "error_arrow_left"}
-          ></div>
+          <div className={!min1170 ? "error_bottom" : "error_left"}></div>
           {dateError}
         </div>
       )}

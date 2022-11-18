@@ -8,19 +8,24 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+
 const loginInfos = {
   email: "",
   password: "",
 };
+
 export default function LoginForm({ setVisible }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
+
+  // gets the email and password as the user populates the fields
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
   };
+  // length, format and requirement validations using Yup
   const loginValidation = Yup.object({
     email: Yup.string()
       .required("Email address is required.")
@@ -28,8 +33,10 @@ export default function LoginForm({ setVisible }) {
       .max(100),
     password: Yup.string().required("Password is required"),
   });
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  // fetch user on Submit, populate cookies and navigate user to the home page
   const loginSubmit = async () => {
     try {
       setLoading(true);
@@ -48,16 +55,19 @@ export default function LoginForm({ setVisible }) {
       setError(error.response.data.message);
     }
   };
+
   return (
     <div className="login_wrap">
-      <div className="login_1">
+      {/* left/top with the logo and text */}
+      <div className="login_logo">
         <img className="social_svg" src="../../icons/social.svg" alt="" />
         <span>
           Social helps you share and evolve with the people in your life.
         </span>
       </div>
-      <div className="login_2">
-        <div className="login_2_wrap">
+      <div className="login_form">
+        {/* right/bottom of the page with the login form */}
+        <div className="login_form_wrap">
           <Formik
             enableReinitialize
             initialValues={{
@@ -90,21 +100,23 @@ export default function LoginForm({ setVisible }) {
               </Form>
             )}
           </Formik>
+          {/* forgot password helps reset the password if the email address is linked to an account */}
           <Link to="/reset" className="forgot_password">
-            Forgotten password?
+            Forgot password?
           </Link>
           <DotLoader color="#51ae84" loading={loading} size={30} />
 
-          {error && <div className="error_text">{error}</div>}
-          <div className="sign_splitter"></div>
+          {error && <div className="error_msg">{error}</div>}
+          {/* create a new account/Sign up */}
+          <div className="signup_splitter"></div>
           <button
-            className="green_btn open_signup"
+            className="green_btn signup_popup"
             onClick={() => setVisible(true)}
           >
             Create Account
           </button>
         </div>
-        <Link to="/" className="sign_extra">
+        <Link to="/" className="extra">
           <b>Create a Page</b> for a non-profit, community or support group.
         </Link>
       </div>

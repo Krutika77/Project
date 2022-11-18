@@ -1,11 +1,11 @@
-.input_wrap {
+.login_input {
   position: relative;
   width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.input_wrap input {
+.login_input input {
   outline: none;
   border: 1px solid var(--bg-third);
   background: var(--bg-primary);
@@ -17,13 +17,13 @@
   margin-bottom: 10px;
   color: var(--color-primary);
 }
-.input_wrap input:focus {
+.login_input input:focus {
   border-color: var(--green-color);
 }
-.input_error_border {
+.error_field_outline {
   border-color: #b94a48 !important;
 }
-.input_wrap i {
+.login_input i {
   position: absolute;
   right: 5px;
   top: 15px;
@@ -39,27 +39,27 @@
   border-radius: 5px;
   margin-bottom: 15px;
 }
-.error_arrow_top {
+.error_top {
   border-top: 10px solid #b94a48;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   position: absolute;
   bottom: -10px;
 }
-.error_arrow_bottom {
+.error_bottom {
   border-bottom: 10px solid #b94a48;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   position: absolute;
   top: -10px;
 }
-.input_error_desktop {
+.fullscreen_input_error {
   position: absolute;
   width: 300px;
   left: -19.5rem;
   top: -3px;
 }
-.error_arrow_left {
+.error_left {
   border-left: 10px solid #b94a48;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
